@@ -20,13 +20,7 @@ public class ProductServiceImpl implements ProductService {
     public ProductResponseDto getProduct(Long number) {
         Product product = productDAO.selectProduct(number);
 
-        return ProductResponseDto
-                .builder()
-                .number(product.getNumber())
-                .name(product.getName())
-                .price(product.getPrice())
-                .stock(product.getStock())
-                .build();
+        return ProductResponseDto.fromEntity(product);
     }
 
     @Override
@@ -40,25 +34,14 @@ public class ProductServiceImpl implements ProductService {
 
         Product savedProduct = productDAO.insertProduct(product);
 
-        return ProductResponseDto
-                .builder()
-                .number(savedProduct.getNumber())
-                .name(savedProduct.getName())
-                .price(savedProduct.getPrice())
-                .stock(savedProduct.getStock())
-                .build();
+        return ProductResponseDto.fromEntity(savedProduct);
     }
 
     @Override
     public ProductResponseDto changeProductName(Long number, String name) throws Exception {
         Product changedProduct = productDAO.updateProductName(number, name);
-        return ProductResponseDto
-                .builder()
-                .number(changedProduct.getNumber())
-                .name(changedProduct.getName())
-                .price(changedProduct.getPrice())
-                .stock(changedProduct.getStock())
-                .build();
+
+        return ProductResponseDto.fromEntity(changedProduct);
     }
 
     @Override
