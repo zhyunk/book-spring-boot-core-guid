@@ -32,6 +32,19 @@ class ProductRepositoryTest {
     @PersistenceContext
     EntityManager entityManager;
 
+    @Test
+    void auditingTest() {
+        Product product = Product.builder()
+                                .name("펜")
+                                .price(1000)
+                                .stock(100)
+                                .build();
+
+        Product save = productRepository.save(product);
+
+        System.out.println("product name : " + save.getName());
+        System.out.println("createdAt : " + save.getCreatedAt());
+    }
 
     @Test
     void queryDslTest3() {
