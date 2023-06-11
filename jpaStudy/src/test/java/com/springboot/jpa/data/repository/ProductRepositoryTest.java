@@ -25,12 +25,16 @@ class ProductRepositoryTest {
     @Autowired
     ProductRepository productRepository;
 
+    @Autowired
+    JPAQueryFactory jpaQueryFactory;
+
+//    JPAQuery에서 사용
     @PersistenceContext
     EntityManager entityManager;
 
+
     @Test
     void queryDslTest3() {
-        JPAQueryFactory jpaQueryFactory = new JPAQueryFactory(entityManager);
         QProduct qProduct = QProduct.product;
 
         // Select 대상이 1개인 경우
@@ -66,7 +70,6 @@ class ProductRepositoryTest {
 
     @Test
     void queryDslTest2() {
-        JPAQueryFactory jpaQueryFactory = new JPAQueryFactory(entityManager);
         QProduct qProduct = QProduct.product;
 
         List<Product> productList = jpaQueryFactory
