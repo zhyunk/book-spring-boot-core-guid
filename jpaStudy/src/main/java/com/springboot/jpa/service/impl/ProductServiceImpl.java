@@ -25,14 +25,16 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public ProductResponseDto saveProduct(ProductDto productDto) {
-        Product product = new Product();
-        product.setName(productDto.getName());
-        product.setPrice(productDto.getPrice());
-        product.setStock(productDto.getStock());
-        product.setCreatedAt(LocalDateTime.now());
-        product.setUpdatedAt(LocalDateTime.now());
 
-        Product savedProduct = productDAO.insertProduct(product);
+        Product savedProduct = productDAO.insertProduct(
+                Product.builder()
+                        .name(productDto.getName())
+                        .price(productDto.getPrice())
+                        .stock(productDto.getStock())
+                        .createdAt(LocalDateTime.now())
+                        .updatedAt(LocalDateTime.now())
+                        .build()
+        );
 
         return ProductResponseDto.fromEntity(savedProduct);
     }
