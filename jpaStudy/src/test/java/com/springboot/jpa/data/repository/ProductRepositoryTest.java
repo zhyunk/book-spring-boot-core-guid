@@ -110,7 +110,7 @@ class ProductRepositoryTest {
 
         System.out.println("=============================================== size : " + productList.size());
 
-        for (Product product: productList) {
+        productList.forEach(product -> {
             System.out.println("==========================================");
             System.out.println();
             System.out.println("product number = " + product.getNumber());
@@ -119,7 +119,7 @@ class ProductRepositoryTest {
             System.out.println("product stock = " + product.getStock());
             System.out.println();
             System.out.println("==========================================");
-        }
+        });
     }
     
     @Test
@@ -143,7 +143,7 @@ class ProductRepositoryTest {
 
         System.out.println("=============================================== size : " + productList.size());
 
-        for (Product product: productList) {
+        productList.forEach(product -> {
             System.out.println("==========================================");
             System.out.println();
             System.out.println("product number = " + product.getNumber());
@@ -152,7 +152,8 @@ class ProductRepositoryTest {
             System.out.println("product stock = " + product.getStock());
             System.out.println();
             System.out.println("==========================================");
-        }
+        });
+
 
     }
 
