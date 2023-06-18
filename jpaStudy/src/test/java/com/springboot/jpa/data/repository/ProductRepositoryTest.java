@@ -4,6 +4,7 @@ import com.querydsl.core.Tuple;
 import com.querydsl.jpa.impl.JPAQuery;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import com.springboot.jpa.data.entity.Product;
+import com.springboot.jpa.data.entity.Provider;
 import com.springboot.jpa.data.entity.QProduct;
 import net.minidev.json.JSONUtil;
 import org.junit.jupiter.api.Test;
@@ -24,6 +25,9 @@ class ProductRepositoryTest {
 
     @Autowired
     ProductRepository productRepository;
+
+    @Autowired
+    ProviderRepository providerRepository;
 
     @Autowired
     JPAQueryFactory jpaQueryFactory;
@@ -216,4 +220,40 @@ class ProductRepositoryTest {
                 Sort.Order.desc("stock")
         );
     }
+
+    @Test
+    void relationshipTest1() {
+        Provider provider = Provider
+                .builder()
+                .name("떙땡 물산")
+                .build();
+        providerRepository.save(provider);
+
+        Product product = Product
+                .builder()
+                .name("키보드")
+                .price(50000)
+                .stock(500)
+                .provider(provider)
+                .build();
+        productRepository.save(product);
+
+        // test
+        System.out.println(
+                "🚩 _____[ product ]______  \n" +
+                        productRepository
+                                .findById(1L)
+                                .orElseThrow(RuntimeException::new)
+        );
+
+        System.out.println(
+                "🚩 _____[ provider ]______  \n" +
+                        productRepository
+                                .findById(1L)
+                                .orElseThrow(RuntimeException::new)
+                                .getProvider()
+
+        );
+    }
+
 }
