@@ -25,7 +25,8 @@ public class Provider extends BaseEntity{
     @OneToMany(
             mappedBy = "provider",
             fetch = FetchType.EAGER,
-            cascade = CascadeType.PERSIST
+            cascade = CascadeType.PERSIST,
+            orphanRemoval = true
     )
     @Builder.Default
     @ToString.Exclude
