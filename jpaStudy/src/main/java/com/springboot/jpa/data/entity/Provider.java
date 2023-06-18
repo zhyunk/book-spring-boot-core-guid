@@ -23,6 +23,7 @@ public class Provider extends BaseEntity{
     private String name;
 
     @OneToMany(mappedBy = "provider", fetch = FetchType.EAGER)
+    @Builder.Default
     @ToString.Exclude
     List<Product> productList = new ArrayList<>();
 }
