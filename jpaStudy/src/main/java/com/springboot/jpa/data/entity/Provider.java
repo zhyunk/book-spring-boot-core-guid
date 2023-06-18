@@ -4,6 +4,8 @@ import lombok.*;
 import lombok.experimental.SuperBuilder;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "provider")
@@ -19,4 +21,8 @@ public class Provider extends BaseEntity{
     private Long id;
 
     private String name;
+
+    @OneToMany(mappedBy = "provider", fetch = FetchType.EAGER)
+    @ToString.Exclude
+    List<Product> productList = new ArrayList<>();
 }

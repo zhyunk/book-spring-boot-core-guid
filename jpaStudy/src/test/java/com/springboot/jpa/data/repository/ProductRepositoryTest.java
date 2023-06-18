@@ -6,19 +6,15 @@ import com.querydsl.jpa.impl.JPAQueryFactory;
 import com.springboot.jpa.data.entity.Product;
 import com.springboot.jpa.data.entity.Provider;
 import com.springboot.jpa.data.entity.QProduct;
-import net.minidev.json.JSONUtil;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.core.annotation.Order;
 import org.springframework.data.domain.Sort;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import java.time.LocalDateTime;
 import java.util.List;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
 class ProductRepositoryTest {
