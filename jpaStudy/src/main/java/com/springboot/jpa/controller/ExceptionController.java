@@ -1,5 +1,7 @@
 package com.springboot.jpa.controller;
 
+import com.springboot.jpa.common.exception.CustomException;
+import com.springboot.jpa.data.type.ExceptionClass;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -39,6 +41,15 @@ public class ExceptionController {
         map.put("message", e.getMessage());
 
         return new ResponseEntity<>(map, responseHeaders, httpStatus);
+    }
+
+    @GetMapping("/custom")
+    public void getCustomException() throws CustomException {
+        throw new CustomException(
+                ExceptionClass.PRODUCT,
+                HttpStatus.BAD_REQUEST,
+                "getCutomException 메서드에서 호출"
+        );
     }
 
 }
