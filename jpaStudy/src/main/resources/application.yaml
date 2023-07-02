@@ -39,5 +39,8 @@ management:
       enabled: true
     caches:
       enabled: false
+    ## actuator health detail info
+    health:
+      show-details: always
 
-## actuator info setting
+
