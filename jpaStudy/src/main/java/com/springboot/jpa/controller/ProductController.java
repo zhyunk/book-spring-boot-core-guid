@@ -4,7 +4,6 @@ import com.springboot.jpa.data.dto.ChangeProductNameDto;
 import com.springboot.jpa.data.dto.ProductDto;
 import com.springboot.jpa.data.dto.ProductResponseDto;
 import com.springboot.jpa.service.ProductService;
-import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,7 +16,6 @@ public class ProductController {
 
     private final ProductService productService;
 
-    @ApiOperation(value = "GET 메서드 예제")
     @GetMapping
     public ResponseEntity<ProductResponseDto> getProduct(Long number) {
         ProductResponseDto productResponseDto = productService.getProduct(number);
@@ -28,7 +26,6 @@ public class ProductController {
     }
 
 
-    @ApiOperation(value = "POST 메서드 예제")
     @PostMapping
     public ResponseEntity<ProductResponseDto> createProductName(@RequestBody ProductDto productDto) {
         ProductResponseDto productResponseDto = productService.saveProduct(productDto);
@@ -38,7 +35,6 @@ public class ProductController {
     }
 
 
-    @ApiOperation(value = "PUT 메서드 예제")
     @PutMapping
     public ResponseEntity<ProductResponseDto> changeProductName(
             @RequestBody ChangeProductNameDto changeProductNameDto
@@ -53,7 +49,6 @@ public class ProductController {
                 .body(productResponseDto);
     }
 
-    @ApiOperation(value = "DELETE 메서드 예제")
     @DeleteMapping
     public ResponseEntity<String> deleteProduct(Long number) throws Exception {
         productService.deleteProduct(number);
