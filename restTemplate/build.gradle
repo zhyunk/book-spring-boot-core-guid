@@ -33,6 +33,7 @@ subprojects {
         compileOnly 'org.projectlombok:lombok'
         annotationProcessor 'org.projectlombok:lombok'
         testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
     }
 
     test {
@@ -40,17 +41,32 @@ subprojects {
     }
 }
 
+project(':commons') {
+
+    bootJar { enabled = false }
+    jar { enabled = true }
+
+    dependencies {}
+}
+
 project(':serverBox') {
 
     bootJar { enabled = true }
     jar { enabled = false }
 
-    dependencies {}
+    dependencies {
+        implementation project(':commons')
+    }
 }
 
 project(':rest') {
     bootJar { enabled = true }
     jar { enabled = false }
 
-    dependencies {}
+    dependencies {
+        implementation project(':commons')
+
+        // springdoc
+        implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.1.0'
+    }
 }

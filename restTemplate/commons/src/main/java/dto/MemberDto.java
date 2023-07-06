@@ -1,4 +1,4 @@
-package com.springboot.serverbox.dto;
+package dto;
 
 import lombok.*;
 
