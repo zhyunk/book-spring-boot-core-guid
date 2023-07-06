@@ -1,4 +1,4 @@
-rootProject.name = 'jpaStudy'
+rootProject.name = 'restTemplate'
 include 'serverBox'
 include 'rest'
 
