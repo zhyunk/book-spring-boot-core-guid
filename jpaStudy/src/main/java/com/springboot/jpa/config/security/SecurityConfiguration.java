@@ -35,12 +35,11 @@ public class SecurityConfiguration {
                 // 리소스 권한 설정
                 .authorizeRequests()
                 .antMatchers(
-                        "/v2/api-docs",
+                        "/webjars/**",
+                        "/v3/api-docs/**",
                         "/swagger-resources/**",
                         "/swagger-ui.html",
-                        "/webjars/**",
-                        "/swagger/**",
-                        "/sign-api/exception"
+                        "/swagger-ui/**"
                 ).permitAll()
                 .antMatchers(
                         "/sign-api/sign-in",
