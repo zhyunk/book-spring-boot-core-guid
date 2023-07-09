@@ -16,10 +16,6 @@ import java.util.List;
 @ToString(callSuper = true)
 public class Provider extends BaseEntity{
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
     private String name;
 
     @OneToMany(

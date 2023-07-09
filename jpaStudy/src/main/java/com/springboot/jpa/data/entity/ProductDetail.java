@@ -15,10 +15,6 @@ import javax.persistence.*;
 @EqualsAndHashCode(callSuper = true)
 public class ProductDetail extends BaseEntity{
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
     private String decription;
 
     @OneToOne
