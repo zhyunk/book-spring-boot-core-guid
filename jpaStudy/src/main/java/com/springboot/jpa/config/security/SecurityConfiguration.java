@@ -49,7 +49,7 @@ public class SecurityConfiguration {
                 .antMatchers("**exception**").permitAll()
                 .anyRequest().hasRole("ADMIN").and()
 
-                // 권환 통과하지 못하는 예외 발생시 예외 전달
+                // 권한 통과하지 못하는 예외 발생시 예외 전달
                 .exceptionHandling()
                 .accessDeniedHandler(new CustomAccessDeniedHandler()).and()
                 
