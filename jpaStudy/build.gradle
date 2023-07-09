@@ -40,6 +40,13 @@ dependencies {
 
     // 액추에이터 ---------------------------------------------------------
     implementation 'org.springframework.boot:spring-boot-starter-actuator'
+
+    // 시큐리티  ------------------------------------------------------------
+    implementation 'org.springframework.boot:spring-boot-starter-security'
+
+    // JWT      ------------------------------------------------------------
+    implementation 'io.jsonwebtoken:jjwt-api:0.11.2'
+
 }
 
 tasks.named('test') {
