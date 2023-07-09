@@ -18,6 +18,10 @@ import java.util.List;
 @Table(name = "product")
 public class Product extends BaseEntity {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long number;
+
     @Column(nullable = false)
     private String name;
 

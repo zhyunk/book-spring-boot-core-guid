@@ -19,10 +19,6 @@ import java.time.LocalDateTime;
 @EntityListeners(AuditingEntityListener.class) // 엔티티를 데이터베이스에 적용하기 전후로 콜백을 요청할 수 있게 한다.
 public class BaseEntity {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
     @CreatedDate // 데이터 생성 날짜 자동 주입
     @Column(updatable = false)
     private LocalDateTime createdAt;

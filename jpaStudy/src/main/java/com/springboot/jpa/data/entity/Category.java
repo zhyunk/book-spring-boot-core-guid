@@ -16,6 +16,10 @@ import java.util.List;
 @ToString(callSuper = true)
 public class Category extends BaseEntity{
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
     @Column(unique = true)
     private String code;
 
