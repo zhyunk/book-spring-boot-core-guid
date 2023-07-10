@@ -9,6 +9,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import static com.springboot.jpa.common.InformationApi.HEADER_AUTH;
+
 @RequiredArgsConstructor
 @RestController
 @RequestMapping("/product")
@@ -17,7 +19,10 @@ public class ProductController {
     private final ProductService productService;
 
     @GetMapping
-    public ResponseEntity<ProductResponseDto> getProduct(Long number) {
+    public ResponseEntity<ProductResponseDto> getProduct(
+            Long number,
+            @RequestHeader(HEADER_AUTH) String header
+    ) {
         ProductResponseDto productResponseDto = productService.getProduct(number);
 
         return ResponseEntity
@@ -27,7 +32,10 @@ public class ProductController {
 
 
     @PostMapping
-    public ResponseEntity<ProductResponseDto> createProductName(@RequestBody ProductDto productDto) {
+    public ResponseEntity<ProductResponseDto> createProductName(
+            @RequestBody ProductDto productDto,
+            @RequestHeader(HEADER_AUTH) String header
+    ) {
         ProductResponseDto productResponseDto = productService.saveProduct(productDto);
         return ResponseEntity
                 .status(HttpStatus.OK)
@@ -37,7 +45,8 @@ public class ProductController {
 
     @PutMapping
     public ResponseEntity<ProductResponseDto> changeProductName(
-            @RequestBody ChangeProductNameDto changeProductNameDto
+            @RequestBody ChangeProductNameDto changeProductNameDto,
+            @RequestHeader(HEADER_AUTH) String header
     ) throws Exception {
         ProductResponseDto productResponseDto = productService.changeProductName(
                 changeProductNameDto.getNumber(),
@@ -50,7 +59,10 @@ public class ProductController {
     }
 
     @DeleteMapping
-    public ResponseEntity<String> deleteProduct(Long number) throws Exception {
+    public ResponseEntity<String> deleteProduct(
+            Long number,
+            @RequestHeader(HEADER_AUTH) String header
+    ) throws Exception {
         productService.deleteProduct(number);
 
         return ResponseEntity

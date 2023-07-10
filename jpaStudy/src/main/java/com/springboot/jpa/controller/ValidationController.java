@@ -7,12 +7,11 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+
+import static com.springboot.jpa.common.InformationApi.HEADER_AUTH;
 
 @Slf4j
 @RestController
@@ -23,7 +22,9 @@ public class ValidationController {
     public ResponseEntity<ValidRequestDto> checkValidationByValid(
             @Valid
             @RequestBody
-            ValidRequestDto dto
+            ValidRequestDto dto,
+            @RequestHeader(HEADER_AUTH) String header
+
     ) {
 
         log.info("🚩 ValidRequestDto ==> {}", dto);
@@ -37,7 +38,9 @@ public class ValidationController {
     public ResponseEntity<ValidRequestDto> checkValidationByValidated(
             @Validated
             @RequestBody
-            ValidRequestDto dto
+            ValidRequestDto dto,
+            @RequestHeader(HEADER_AUTH) String header
+
     ) {
 
         log.info("🚩 ValidatedRequestDto ==> {}", dto);
@@ -51,7 +54,9 @@ public class ValidationController {
     public ResponseEntity<ValidRequestDto> checkValidationByValidated1(
             @Validated(ValidationGroup1.class)
             @RequestBody
-            ValidRequestDto dto
+            ValidRequestDto dto,
+            @RequestHeader(HEADER_AUTH) String header
+
     ) {
 
         log.info("🚩 ValidatedRequestDto group 1 ==> {}", dto);
@@ -65,7 +70,9 @@ public class ValidationController {
     public ResponseEntity<ValidRequestDto> checkValidationByValidated2(
             @Validated(ValidationGroup2.class)
             @RequestBody
-            ValidRequestDto dto
+            ValidRequestDto dto,
+            @RequestHeader(HEADER_AUTH) String header
+
     ) {
 
         log.info("🚩 ValidatedRequestDto group 2 ==> {}", dto);
@@ -79,7 +86,9 @@ public class ValidationController {
     public ResponseEntity<ValidRequestDto> checkValidationByValidatedAll(
             @Validated({ValidationGroup1.class, ValidationGroup2.class})
             @RequestBody
-            ValidRequestDto dto
+            ValidRequestDto dto,
+            @RequestHeader(HEADER_AUTH) String header
+
     ) {
 
         log.info("🚩 ValidatedRequestDto group 1,2 ==> {}", dto);

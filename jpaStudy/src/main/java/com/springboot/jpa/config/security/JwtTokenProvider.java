@@ -18,6 +18,8 @@ import java.security.Key;
 import java.util.Date;
 import java.util.List;
 
+import static com.springboot.jpa.common.InformationApi.HEADER_AUTH;
+
 @Slf4j
 @Component
 @RequiredArgsConstructor
@@ -72,7 +74,7 @@ public class JwtTokenProvider {
     public String resolveToken(HttpServletRequest request) {
         log.info("[resolveToken] HTTP 헤더에서 Token 값 추출");
 
-        return request.getHeader("X-AUTH-TOKEN");
+        return request.getHeader(HEADER_AUTH);
     }
 
     public boolean validateToken(String token) {
